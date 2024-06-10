@@ -1,8 +1,11 @@
 <?php
 class MyFileObject{
-    public $filename;
+    private $filename;
     function __construct($fname){
         $this->filename = $fname;
+        if(!file_exists($this->filename)){
+            die('There is no file '.$this->filename);
+        }
     }
     function isFile(){
         return is_file($this->filename);
@@ -10,8 +13,9 @@ class MyFileObject{
 };
 $file = new MyFileObject('data.txt');
 // $file->filename = 'data.txt';
+
 var_dump($file->isFile());
-var_dump($file->filename);
+// var_dump($file->filename);
 
 /*
 MyFileObject : Class
